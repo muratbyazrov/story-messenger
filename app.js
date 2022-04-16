@@ -6,18 +6,19 @@ const {System} = require("./src/system");
 class App extends System {
     run() {
         wsServer.on('connection', (wsClient) => {
-            console.log(`ws client is connected`)
+            this.logger.log(`ws client is connected`);
 
             wsClient.on('message', (message) => {
                 try {
                     mainController.run(message);
                 } catch (error) {
-                    wsClient.send(this.logger.log(error.message));
+                    this.logger.log(error.message);
+                    wsClient.send(this.logger.formatData(error.message));
                 }
             });
 
-            wsClient.on('close', (message) => {
-                console.log('ws client is disconnected')
+            wsClient.on('close', () => {
+                this.logger.log('ws client is disconnected');
             })
         });
     }

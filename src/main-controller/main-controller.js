@@ -1,14 +1,13 @@
-const {validator} = require("../system/validator");
 const {mainControllerSchema} = require("./main-controller-schema");
 const {System} = require("../system");
 
 class MainController extends System {
     run(message) {
         try {
-            console.log(`get message ${message}`);
+            this.logger.log(`MainController. Get Message: ${message}`)
             this.validator.validate(message, mainControllerSchema);
         } catch (error) {
-            throw error
+            throw error;
         }
     }
 }
