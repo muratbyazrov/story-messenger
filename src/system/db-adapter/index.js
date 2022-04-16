@@ -1,6 +1,6 @@
 const {Client} = require('pg');
 const {exec} = require('child_process');
-const {log} = require("debug");
+const {connect} = require("db-migrate-pg");
 
 const postgresClient = new Client({
     user: 'postgres',
@@ -8,20 +8,23 @@ const postgresClient = new Client({
     database: 'postgres',
     password: 'test',
     port: 5432,
-})
-postgresClient.connect(function (err) {
+});
+
+postgresClient.connect((err) => {
     if (err) throw err;
     const now = new Date();
-    const date = now.toLocaleString()
+    const date = now.toLocaleString();
     console.log(`${date} | Connected to postgres data base!`);
-
-    exec(`/bin/sh ${__dirname}/migration-runner.sh`, (error, stdout, stderr) => {
-        console.log(`${date} | `, stdout);
-        console.log(`${date} | `, stderr);
-        if (error !== null) {
-            console.log(`${date} | exec error: ${error}`);
-        }
-    })
 });
+
+exec(`/bin/sh ${__dirname}/migration-runner.sh`, (error, stdout, stderr) => {
+    const now = new Date();
+    const date = now.toLocaleString()
+    console.log(`${date} | `, stdout);
+    console.log(`${date} | `, stderr);
+    if (error !== null) {
+        console.log(`${date} | exec error: ${error}`);
+    }
+})
 
 module.exports = {postgresClient};
