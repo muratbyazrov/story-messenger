@@ -26,4 +26,3 @@ class App extends System {
 
 const app = new App();
 app.run();
-

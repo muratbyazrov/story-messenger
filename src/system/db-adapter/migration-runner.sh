@@ -1,1 +1,2 @@
-db-migrate up
+cd ./src/db;
+db-migrate up;

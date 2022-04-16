@@ -1,7 +1,8 @@
 {
   "dev": {
     "driver": "pg",
-    "filename": "~/dev.db"
+    "user": "postgres",
+    "password": "test"
   },
 
   "prod": {
