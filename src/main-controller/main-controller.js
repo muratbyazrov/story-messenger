@@ -2,10 +2,10 @@ const {mainControllerSchema} = require("./main-controller-schema");
 const {System} = require("../system");
 
 class MainController extends System {
-    run(message) {
+    run(data) {
         try {
-            this.logger.log(`MainController. Get Message: ${message}`)
-            this.validator.validate(message, mainControllerSchema);
+            this.logger.log(`MainController. Get Message: ${data}`);
+            this.validator.validate(data, mainControllerSchema);
         } catch (error) {
             throw error;
         }
