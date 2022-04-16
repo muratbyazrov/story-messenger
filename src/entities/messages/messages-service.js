@@ -1,4 +1,4 @@
-import {System} from "../system";
+import {System} from "../../system";
 
 class MessagesService extends System {
     getMessages(data) {

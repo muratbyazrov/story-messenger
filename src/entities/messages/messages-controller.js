@@ -1,4 +1,4 @@
-import {System} from "../system";
+import {System} from "../../system";
 import {getMessagesSchema, modifyMessagesSchema, removeMessagesSchema} from "./schemas.js";
 import {messagesService} from "./index";
 
