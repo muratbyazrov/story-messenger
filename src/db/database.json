@@ -2,13 +2,17 @@
   "dev": {
     "driver": "pg",
     "user": "postgres",
-    "password": "test"
+    "password": "test",
+    "database": "story_messenger",
+    "schema": "story_messenger"
   },
 
   "prod": {
     "driver": "pg",
     "user": {"ENV": "PRODUCTION_USERNAME"},
-    "password": {"ENV": "PRODUCTION_PASSWORD"}
+    "password": {"ENV": "PRODUCTION_PASSWORD"},
+    "database": "story_messenger",
+    "schema": "story_messenger"
   },
 
   "pg": {
@@ -17,6 +21,8 @@
     "password": "test",
     "host": "localhost",
     "port": 5432,
+    "database": "story_messenger",
+    "schema": "story_messenger",
     "ssl": "true"
   }
 }
