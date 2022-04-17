@@ -1,10 +1,13 @@
+const {schemaItems: {string}} = require('../system/validator/index.js')
+
 const mainControllerSchema = {
     id: "/MainController",
     type: "object",
     properties: {
-        event: {"type": "string"},
+        event: string,
+        domain: string,
     },
-    required: ["event"]
+    required: ['event', 'domain']
 }
 
 module.exports = {

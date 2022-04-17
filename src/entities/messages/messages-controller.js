@@ -1,27 +1,46 @@
-import {System} from "../../system";
-import {getMessagesSchema, modifyMessagesSchema, removeMessagesSchema} from "./schemas.js";
-import {messagesService} from "./index";
+const {System} = require("../../system");
+const {getMessagesSchema, modifyMessagesSchema, removeMessagesSchema} = require("./schemas.js");
+const {MessagesService} = require("./index");
 
 class MessagesController extends System {
+    constructor(options) {
+        super(options);
+
+        this.messagesService = new MessagesService();
+    }
+
+    run(data){
+        switch(data.event) {
+            case 'getMessages':
+                return this.getMessages(data);
+            case 'modifyMessages':
+                return this.modifyMessages(data);
+            case 'removeMessages':
+                return this.removeMessages(data);
+            default:
+                return {}
+        }
+    }
+
     getMessages(data) {
         this.logger.log(`MessagesController.getMessages: ${data}`);
         this.validator.validate(data, getMessagesSchema);
 
-        return messagesService.getMessages(data);
+        return this.messagesService.getMessages(data);
     }
 
     modifyMessages(data) {
         this.logger.log(`MessagesController.modifyMessages: ${data}`);
         this.validator.validate(data, modifyMessagesSchema);
 
-        return messagesService.modifyMessages(data);
+        return this.messagesService.modifyMessages(data);
     }
 
     removeMessages(data) {
         this.logger.log(`MessagesController.modifyMessages: ${data}`);
         this.validator.validate(data, removeMessagesSchema);
 
-        return messagesService.removeMessages(data);
+        return this.messagesService.removeMessages(data);
     }
 }
 
