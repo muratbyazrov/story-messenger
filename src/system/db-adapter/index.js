@@ -15,26 +15,19 @@ class DbAdapter {
         this.runMigrations();
     }
 
-    getData() {
-        const date = new Date();
-        return `${date.toLocaleString()}`;
-    }
-
     async connectPostgres() {
         await this.client.connect((err) => {
             if (err) throw err;
-            console.log(`${this.getData()} | Connected to postgres data base!`);
+            console.log('SYSTEM >>>>>>>>>>: Connected to postgres data base!');
         });
     }
 
     async runMigrations() {
         await exec(`/bin/sh ${__dirname}/migration-runner.sh`, (error, stdout, stderr) => {
-            const now = new Date();
-            const date = now.toLocaleString()
-            console.log(`${date} | `, stdout);
-            console.log(`${date} | `, stderr);
+            console.log('SYSTEM >>>>>>>>>>:', stdout);
+            console.log('SYSTEM >>>>>>>>>>:', stderr);
             if (error !== null) {
-                console.log(`${date} | exec error: ${error}`);
+                console.log(`SYSTEM >>>>>>>>>>: exec error: ${error}`);
             }
         })
     }

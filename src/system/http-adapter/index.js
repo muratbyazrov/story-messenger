@@ -2,12 +2,15 @@ const express = require('express');
 const app = express();
 
 class HttpAdapter {
-    run(port){
-        app.listen(port, () => {
-            console.log(`Example app listening on port ${port}`);
-        })
+    run(options, callback) {
+        app.listen(options.port, () => {
+            console.log(`SYSTEM >>>>>>>>>>: App listening on port ${options.port}`)
+        });
 
-        return app;
+        app.post(options.path, (req, res) => {
+            console.log(`SYSTEM >>>>>>>>>>: Get HTTP message`, req);
+            res.send(callback(req));
+        });
     }
 }
 
