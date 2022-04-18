@@ -13,14 +13,14 @@ class App extends System {
                 port: 3000,
                 path: '/story-messenger-api/v1'
             },
-            () => this.gate.run()
+            (req) => this.gate.run(req),
         );
 
         this.wsAdapter.run(
             {
                 port: 9000
             },
-            () => this.gate.run()
+            (message) => this.gate.run(message),
         );
     }
 }

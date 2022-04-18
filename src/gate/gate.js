@@ -10,7 +10,7 @@ class Gate extends System {
 
     run(data) {
         try {
-            this.logger.log(`Gate. Get Message: ${data}`);
+            this.logger.log(`Gate. Get Message`, data);
             this.validator.validate(data, gateSchema);
 
             switch(data.domain) {
