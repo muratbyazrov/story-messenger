@@ -8,8 +8,20 @@ class App extends System {
     }
 
     run() {
-        this.httpAdapter.run({port: 3000, path: '/story-messenger-api/v1'}, (req) => this.gate.run(req));
-        this.wsAdapter.run({port: 9000},() => this.gate.run());
+        this.httpAdapter.run(
+            {
+                port: 3000,
+                path: '/story-messenger-api/v1'
+            },
+            () => this.gate.run()
+        );
+
+        this.wsAdapter.run(
+            {
+                port: 9000
+            },
+            () => this.gate.run()
+        );
     }
 }
 

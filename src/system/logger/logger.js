@@ -1,6 +1,6 @@
 class Logger {
     log(data) {
-        console.log(new Date().toLocaleString(), data);
+        console.log('LOGGER >>>>>>>>>>: ', new Date().toLocaleString(), data);
     }
 }
 

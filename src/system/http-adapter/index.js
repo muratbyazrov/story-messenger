@@ -8,7 +8,6 @@ class HttpAdapter {
         });
 
         app.post(options.path, (req, res) => {
-            console.log(`SYSTEM >>>>>>>>>>: Get HTTP message`, req);
             res.send(callback(req));
         });
     }
