@@ -1,12 +1,12 @@
 const WebSocket = require('ws');
 const wsServer = new WebSocket.Server({port: 9000});
-const {MainController} = require('./src/main-controller');
+const {Gate} = require('./src/gate');
 const {System} = require("./src/system");
 
 class App extends System {
     constructor(options) {
         super(options);
-        this.mainController = new MainController();
+        this.mainController = new Gate();
     }
 
     run() {

@@ -2,6 +2,10 @@ const {System} = require("../../system");
 const {createMessage, getMessages} = require('./queries.js');
 
 class MessagesService extends System {
+    constructor() {
+        super();
+    }
+
     getMessages(data) {
         return this.dbAdapter.execQuery({
             queryName: getMessages, values: [...data.params]

@@ -1,7 +1,7 @@
 const {schemaItems: {string}} = require('../system/validator/index.js')
 
-const mainControllerSchema = {
-    id: "/MainController",
+const gateSchema = {
+    id: "/Gate",
     type: "object",
     properties: {
         event: string,
@@ -11,5 +11,5 @@ const mainControllerSchema = {
 }
 
 module.exports = {
-    mainControllerSchema
+    gateSchema,
 }

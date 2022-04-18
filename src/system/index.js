@@ -10,7 +10,7 @@ class System {
         this.validator = new Validator();
         this.dbAdapter = new DbAdapter();
         this.httpAdapter = new HttpAdapter();
-        this.wsAdapter = new WsAdapter()
+        this.wsAdapter = new WsAdapter();
     }
 }
 

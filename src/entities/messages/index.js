@@ -1,7 +1,5 @@
-const {MessageController} = require('./messages-controller.js');
-const {MessageService} = require('./messages-service.js');
+const {MessagesGate} = require('./messages-gate.js');
 
 module.exports = {
-    MessageController,
-    MessageService,
+    MessagesGate,
 }
