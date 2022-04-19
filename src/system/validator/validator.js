@@ -5,7 +5,13 @@ class Validator {
         const validateResult = validate(request, schema);
 
         if (validateResult.errors.length) {
-            throw new Error(validateResult.errors[0].stack)
+            console.error(`(${new Date().toLocaleString()}) VALIDATION ERROR >>>>>>>>>>: `, validateResult.errors[0].stack);
+            throw {
+                code: 404,
+                name: 'validationError',
+                message: validateResult.errors[0].stack,
+                schema: validateResult.errors[0].schema,
+            };
         }
     }
 }

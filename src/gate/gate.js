@@ -23,7 +23,7 @@ class Gate extends System {
             //         return {}
             // }
         } catch (error) {
-            throw error;
+            this.logger.error(error);
         }
     }
 }
