@@ -21,7 +21,7 @@ class WsAdapter {
                 });
             });
         } catch (error) {
-            console.log(error.message);
+            console.log(`SYSTEM >>>>>>>>>>: ${error.message}`);
         }
     }
 }
