@@ -1,14 +1,20 @@
 const {System} = require('../../system');
+const {MessagesController} = require('./messages-controller.js');
 
 class MessagesGate extends System {
+    constructor(options) {
+        super(options);
+        this.messagesController = new MessagesController();
+    }
+
     run(data) {
         switch (data.event) {
             case 'getMessages':
-                return this.getMessages(data);
+                return this.messagesController.getMessages(data);
             case 'modifyMessages':
-                return this.modifyMessages(data);
+                return this.messagesController.modifyMessages(data);
             case 'removeMessages':
-                return this.removeMessages(data);
+                return this.messagesController.removeMessages(data);
             default:
                 return {};
         }

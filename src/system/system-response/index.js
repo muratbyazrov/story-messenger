@@ -1,6 +1,6 @@
 class SystemResponse {
     response(data) {
-        const {positive, ..._data} = data;
+        const {positive = true, ..._data} = data;
         if (!positive) {
             return {error: _data};
         }

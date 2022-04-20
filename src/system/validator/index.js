@@ -1,13 +1,11 @@
 const {Validator} = require('./validator.js');
 const schemaItems = {
     params: {
-        'type': 'array',
-        'items': {
-            'type': 'object',
-        },
+        'type': 'object',
     },
     string: {'type': 'string'},
     number: {'type': 'number'},
+    limit: {'type': 'number', 'minValue': 1},
 };
 
 module.exports = {

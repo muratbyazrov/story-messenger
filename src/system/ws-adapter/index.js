@@ -6,7 +6,7 @@ class WsAdapter {
         try {
             this.wsServer.on('connection', wsClient => {
                 // 1. connect
-                console.log('SYSTEM >>>>>>>>>>: WS client is connected');
+                console.log('SYSTEM [INFO] WS client is connected');
 
                 // 2. callback
                 try {
@@ -17,11 +17,11 @@ class WsAdapter {
 
                 // 3. disconnect
                 wsClient.on('close', () => {
-                    console.log('SYSTEM >>>>>>>>>>: WS client is disconnected');
+                    console.log('SYSTEM [INFO] WS client is disconnected');
                 });
             });
         } catch (error) {
-            console.log(`SYSTEM >>>>>>>>>>: ${error.message}`);
+            console.log(`SYSTEM [ERROR]: ${error.message}`);
         }
     }
 }

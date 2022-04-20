@@ -25,8 +25,9 @@ module.exports = {
         FROM
             messages
         WHERE
-            user_id = :userId
-            AND chat_id = :chatId
-        OFFSET :offset
+            TRUE
+            /*userId: AND user_id = :userId*/
+            /*chatId: AND chat_id = :chatId*/
+            /*offset: OFFSET :offset*/
         LIMIT :limit;`,
 };

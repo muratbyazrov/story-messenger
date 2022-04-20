@@ -9,21 +9,18 @@ class MessagesController extends System {
     }
 
     getMessages(data) {
-        this.logger.log(`MessagesController.getMessages: ${data}`);
         this.validator.validate(data, getMessagesSchema);
 
         return this.messagesService.getMessages(data);
     }
 
     modifyMessages(data) {
-        this.logger.log(`MessagesController.modifyMessages: ${data}`);
         this.validator.validate(data, modifyMessagesSchema);
 
         return this.messagesService.modifyMessages(data);
     }
 
     removeMessages(data) {
-        this.logger.log(`MessagesController.modifyMessages: ${data}`);
         this.validator.validate(data, removeMessagesSchema);
 
         return this.messagesService.removeMessages(data);

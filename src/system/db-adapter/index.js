@@ -1,5 +1,6 @@
 const {Client} = require('pg');
 const {exec} = require('child_process');
+const {DbError} = require('../system-errors');
 
 class DbAdapter {
     constructor() {
@@ -18,26 +19,32 @@ class DbAdapter {
     async connectPostgres() {
         await this.client.connect(err => {
             if (err) {
-                throw err;
+                throw new DbError(err.message);
             }
-            console.log('SYSTEM >>>>>>>>>>: Connected to postgres data base!');
+            console.log('SYSTEM [INFO] Connected to postgres data base!');
         });
     }
 
     async runMigrations() {
         await exec(`/bin/sh ${__dirname}/migration-runner.sh`, (error, stdout, stderr) => {
-            console.log('SYSTEM >>>>>>>>>>:', stdout);
-            console.log('SYSTEM >>>>>>>>>>:', stderr);
+            if (stdout) {
+                console.log('SYSTEM', stdout);
+            }
+            if (stderr) {
+                console.log('SYSTEM [INFO]', stderr);
+            }
             if (error !== null) {
-                console.log(`SYSTEM >>>>>>>>>>: exec error: ${error}`);
+                console.log(`SYSTEM [ERROR]: exec error: ${error}`);
             }
         });
     }
 
-    execQuery(query) {
-        return this.client.query(query, (err, res) => {
+    async execQuery(query) {
+        const {queryName, values} = query;
+
+        await this.client.query(queryName, values, (err, res) => {
             if (err) {
-                throw err;
+                throw new DbError(err.message);
             }
             return res;
         });

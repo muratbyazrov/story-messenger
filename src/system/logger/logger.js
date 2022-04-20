@@ -1,10 +1,10 @@
 class Logger {
     log(data) {
-        console.error(`(${new Date().toLocaleString()}) LOGGER >>>>>>>>>>: `, data);
+        console.error(`(${new Date().toLocaleString()}) LOGGER [INFO] `, data);
     }
 
     error(error) {
-        console.error(`(${new Date().toLocaleString()}) SYSTEM ERROR >>>>>>>>>>: `, error);
+        console.error(`(${new Date().toLocaleString()}) LOGGER [ERROR] `, error);
     }
 }
 

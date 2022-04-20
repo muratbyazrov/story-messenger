@@ -4,7 +4,8 @@ const {createMessage, getMessages} = require('./queries.js');
 class MessagesService extends System {
     getMessages(data) {
         return this.dbAdapter.execQuery({
-            queryName: getMessages, values: [...data.params],
+            queryName: getMessages,
+            values: [data.params.limit],
         });
     }
 
