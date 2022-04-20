@@ -1,5 +1,5 @@
 const {Gate} = require('./src/gate');
-const {System} = require("./src/system");
+const {System} = require('./src/system');
 
 class App extends System {
     constructor(options) {
@@ -11,16 +11,16 @@ class App extends System {
         this.httpAdapter.run(
             {
                 port: 3000,
-                path: '/story-messenger-api/v1'
+                path: '/story-messenger-api/v1',
             },
-            (request) => this.gate.run(request),
+            request => this.gate.run(request),
         );
 
         this.wsAdapter.run(
             {
-                port: 9000
+                port: 9000,
             },
-            (request) => this.gate.run(request),
+            request => this.gate.run(request),
         );
     }
 }

@@ -28,5 +28,5 @@ module.exports = {
             user_id = :userId
             AND chat_id = :chatId
         OFFSET :offset
-        LIMIT :limit;`
-}
+        LIMIT :limit;`,
+};

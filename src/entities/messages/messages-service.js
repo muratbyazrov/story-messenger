@@ -1,20 +1,16 @@
-const {System} = require("../../system");
+const {System} = require('../../system');
 const {createMessage, getMessages} = require('./queries.js');
 
 class MessagesService extends System {
-    constructor() {
-        super();
-    }
-
     getMessages(data) {
         return this.dbAdapter.execQuery({
-            queryName: getMessages, values: [...data.params]
+            queryName: getMessages, values: [...data.params],
         });
     }
 
     createMessage(data) {
         return this.dbAdapter.execQuery({
-            queryName: createMessage, values: [...data.params]
+            queryName: createMessage, values: [...data.params],
         });
     }
 
@@ -23,10 +19,10 @@ class MessagesService extends System {
     }
 
     removeMessages(data) {
-        this.dbAdapter.execQuery()
+        this.dbAdapter.execQuery();
     }
 }
 
 module.exports = {
-    MessagesService
-}
+    MessagesService,
+};

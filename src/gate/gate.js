@@ -1,6 +1,6 @@
-const {gateSchema} = require("./gate-schema");
-const {System} = require("../system");
-const {MessagesGate} = require("../entities/messages");
+const {gateSchema} = require('./gate-schema');
+const {System} = require('../system');
+const {MessagesGate} = require('../entities/messages');
 
 class Gate extends System {
     constructor(options) {
@@ -23,7 +23,8 @@ class Gate extends System {
             //         return {}
             // }
         } catch (error) {
-            this.logger.error(error);
+            this.logger.log(error);
+            return this.systemResponse.response(error);
         }
     }
 }

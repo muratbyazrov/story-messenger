@@ -4,13 +4,13 @@ class WsAdapter {
     run(options, callback) {
         this.wsServer = new WebSocket.Server({port: options.port});
         try {
-            this.wsServer.on('connection', (wsClient) => {
+            this.wsServer.on('connection', wsClient => {
                 // 1. connect
                 console.log('SYSTEM >>>>>>>>>>: WS client is connected');
 
                 // 2. callback
                 try {
-                    wsClient.on('message', (message) => callback(message));
+                    wsClient.on('message', message => callback(message));
                 } catch (error) {
                     wsClient.send(`${new Date().toLocaleString()} | ${error.message}`);
                 }
@@ -28,4 +28,4 @@ class WsAdapter {
 
 module.exports = {
     WsAdapter,
-}
+};

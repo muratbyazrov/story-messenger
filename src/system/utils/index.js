@@ -2,9 +2,9 @@ class Utils {
     isJson(data) {
         let result = false;
         try {
-            JSON.parse(data)
-        } catch (e) {
-            result = true
+            JSON.parse(data);
+        } catch (err) {
+            result = true;
         }
         return result;
     }

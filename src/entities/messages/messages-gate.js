@@ -1,8 +1,8 @@
 const {System} = require('../../system');
 
 class MessagesGate extends System {
-    run(data){
-        switch(data.event) {
+    run(data) {
+        switch (data.event) {
             case 'getMessages':
                 return this.getMessages(data);
             case 'modifyMessages':
@@ -10,9 +10,9 @@ class MessagesGate extends System {
             case 'removeMessages':
                 return this.removeMessages(data);
             default:
-                return {}
+                return {};
         }
     }
 }
 
-module.exports = {MessagesGate}
+module.exports = {MessagesGate};

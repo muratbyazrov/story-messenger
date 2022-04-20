@@ -16,8 +16,10 @@ class DbAdapter {
     }
 
     async connectPostgres() {
-        await this.client.connect((err) => {
-            if (err) throw err;
+        await this.client.connect(err => {
+            if (err) {
+                throw err;
+            }
             console.log('SYSTEM >>>>>>>>>>: Connected to postgres data base!');
         });
     }
@@ -29,16 +31,16 @@ class DbAdapter {
             if (error !== null) {
                 console.log(`SYSTEM >>>>>>>>>>: exec error: ${error}`);
             }
-        })
+        });
     }
 
     execQuery(query) {
         return this.client.query(query, (err, res) => {
             if (err) {
-                throw err
+                throw err;
             }
             return res;
-        })
+        });
     }
 }
 

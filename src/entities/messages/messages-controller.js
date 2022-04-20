@@ -1,5 +1,5 @@
-const {System} = require("../../system");
-const {getMessagesSchema, modifyMessagesSchema, removeMessagesSchema} = require("./schemas.js");
+const {System} = require('../../system');
+const {getMessagesSchema, modifyMessagesSchema, removeMessagesSchema} = require('./schemas.js');
 const {MessagesService} = require('./messages-service');
 
 class MessagesController extends System {
@@ -31,5 +31,5 @@ class MessagesController extends System {
 }
 
 module.exports = {
-    MessagesController
-}
+    MessagesController,
+};
