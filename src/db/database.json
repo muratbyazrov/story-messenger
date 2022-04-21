@@ -3,7 +3,7 @@
     "driver": "pg",
     "user": "postgres",
     "password": "test",
-    "database": "story_messenger",
+    "database": "postgres",
     "schema": "story_messenger"
   },
 
@@ -11,7 +11,7 @@
     "driver": "pg",
     "user": {"ENV": "PRODUCTION_USERNAME"},
     "password": {"ENV": "PRODUCTION_PASSWORD"},
-    "database": "story_messenger",
+    "database": "postgres",
     "schema": "story_messenger"
   },
 
@@ -21,7 +21,7 @@
     "password": "test",
     "host": "localhost",
     "port": 5432,
-    "database": "story_messenger",
+    "database": "postgres",
     "schema": "story_messenger",
     "ssl": "true"
   }

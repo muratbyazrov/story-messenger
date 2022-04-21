@@ -8,18 +8,18 @@ class Gate extends System {
         this.messagesGate = new MessagesGate();
     }
 
-    run(request) {
+    async run(request) {
         try {
             const data = this.utils.isJson(request) ? request : JSON.parse(request);
             this.logger.log(data);
             this.validator.validate(data, gateSchema);
             switch (data.domain) {
                 case 'messages':
-                    return this.messagesGate.run(data);
+                    return this.systemResponse.response(await this.messagesGate.run(data));
                 case 'chats':
-                    return {};
+                    return this.systemResponse.response({});
                 default:
-                    return {};
+                    return this.systemResponse.response({});
             }
         } catch (error) {
             this.logger.log(error);

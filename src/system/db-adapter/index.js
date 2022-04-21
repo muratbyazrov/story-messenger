@@ -1,9 +1,11 @@
 const {Client} = require('pg');
 const {exec} = require('child_process');
 const {DbError} = require('../system-errors');
+const {Utils} = require('../utils');
 
-class DbAdapter {
+class DbAdapter extends Utils {
     constructor() {
+        super();
         this.client = new Client({
             user: 'postgres',
             host: 'localhost',
@@ -39,15 +41,61 @@ class DbAdapter {
         });
     }
 
-    async execQuery(query) {
-        const {queryName, values} = query;
+    async execQuery({queryName, params, unlock = true}) {
+        const preparedQuery = this.getPreparedQuery(queryName, params, unlock);
+        try {
+            const res = await this.client.query(preparedQuery);
+            return {
+                positive: true,
+                res: res.rows,
+            };
+        } catch (err) {
+            this.error(err.message);
+            return {
+                positive: false,
+                err,
+            };
+        }
+    }
 
-        await this.client.query(queryName, values, (err, res) => {
-            if (err) {
-                throw new DbError(err.message);
+    getPreparedQuery(query, params, unlock) {
+        let text = query;
+        if (unlock) {
+            text = this.unlockParams(text, params);
+        }
+
+        const values = [];
+        let paramNum = 0;
+        text = text
+            .replace(/\:(\w+)/g, (text, placeholder) => {
+                if (this.has(params, placeholder)) {
+                    ++paramNum;
+                    values.push(params[placeholder]);
+                    return `$${paramNum}`;
+                }
+
+                return text;
+            })
+            .trim();
+
+        return {text, values};
+    }
+
+    unlockParams(query, params) {
+        let unlockedTemplate = query;
+
+        for (const param in params) {
+            if (this.has(params, param)) {
+                unlockedTemplate = this.unlockTemplate(unlockedTemplate, param);
             }
-            return res;
-        });
+        }
+
+        return unlockedTemplate;
+    }
+
+    unlockTemplate(query, templateName) {
+        const pattern = new RegExp(`/\\*${templateName}:(.+?)\\*/`, 'gm');
+        return query.replace(pattern, '$1');
     }
 }
 

@@ -5,7 +5,7 @@ class MessagesService extends System {
     getMessages(data) {
         return this.dbAdapter.execQuery({
             queryName: getMessages,
-            values: [data.params.limit],
+            params: {...data.params},
         });
     }
 

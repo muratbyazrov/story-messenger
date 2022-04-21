@@ -1,4 +1,6 @@
-class Utils {
+const {Logger} = require('../logger');
+
+class Utils extends Logger {
     isJson(data) {
         let result = false;
         try {
@@ -11,6 +13,13 @@ class Utils {
 
     isObject(data) {
         return typeof data === 'object' && !Array.isArray(data) && data !== null;
+    }
+
+    has(obj, keyName) {
+        if (!obj) {
+            return false;
+        }
+        return Object.prototype.hasOwnProperty.call(obj, keyName);
     }
 }
 
