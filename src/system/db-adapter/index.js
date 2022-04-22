@@ -48,10 +48,7 @@ class DbAdapter extends Utils {
             return {positive: true, ...res.rows[0]};
         } catch (err) {
             this.error(err.message);
-            return {
-                positive: false,
-                err,
-            };
+            throw new DbError(err.message);
         }
     }
 

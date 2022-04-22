@@ -25,7 +25,7 @@ module.exports = {
         FROM
             messages
         WHERE
-            TRUE
+            TRUE dfd
             /*userId: AND user_id = :userId*/
             /*chatId: AND chat_id = :chatId*/
             /*offset: OFFSET :offset*/
