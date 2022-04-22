@@ -13,10 +13,10 @@ class Gate extends Utils {
     async run(request) {
         try {
             const data = this.isJson(request) ? request : JSON.parse(request);
-            this.log(data);
             this.validate(data, gateSchema);
             return this.getSystemResponse(await this.handlers[data.domain].run(data));
-        } catch (error) {
+        } catch (err) {
+            const error = this.getSystemResponse(err);
             this.log(error);
             return error;
         }
