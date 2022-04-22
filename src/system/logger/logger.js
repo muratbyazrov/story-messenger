@@ -1,4 +1,6 @@
-class Logger {
+const {Validator} = require('../validator');
+
+class Logger extends Validator {
     log(data) {
         console.error(`(${new Date().toLocaleString()}) LOGGER [INFO] `, data);
     }

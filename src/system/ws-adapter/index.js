@@ -10,7 +10,9 @@ class WsAdapter {
 
                 // 2. callback
                 try {
-                    wsClient.on('message', message => callback(message));
+                    wsClient.on('message', async message => {
+                        wsClient.send(JSON.stringify(await callback(message)));
+                    });
                 } catch (error) {
                     wsClient.send(`${new Date().toLocaleString()} | ${error.message}`);
                 }

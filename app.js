@@ -1,10 +1,12 @@
-const {Gate} = require('./src/gate');
 const {System} = require('./src/system');
+const {MessagesGate} = require('./src/entities/messages/messages-gate.js');
 
 class App extends System {
-    constructor(options) {
-        super(options);
-        this.gate = new Gate();
+    constructor() {
+        super();
+        this.gate = new this.Gate([
+            {EntityGate: MessagesGate, domain: 'messages'},
+        ]);
     }
 
     run() {

@@ -8,9 +8,9 @@ class HttpAdapter {
             console.log(`SYSTEM [INFO] App listening on port ${options.port}`);
         });
         app.use(bodyParser.json());
-        app.post(options.path, (req, res) => {
+        app.post(options.path, async (req, res) => {
             try {
-                res.send(callback(req.body));
+                res.send(await callback(req.body));
             } catch (err) {
                 res.send(err);
             }

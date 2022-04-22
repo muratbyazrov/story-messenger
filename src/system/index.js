@@ -4,7 +4,7 @@ const {DbAdapter} = require('./db-adapter');
 const {HttpAdapter} = require('./http-adapter');
 const {WsAdapter} = require('./ws-adapter');
 const {Utils} = require('./utils');
-const {SystemResponse} = require('./system-response');
+const {Gate} = require('./gate');
 
 class System {
     constructor() {
@@ -14,7 +14,7 @@ class System {
         this.httpAdapter = new HttpAdapter();
         this.wsAdapter = new WsAdapter();
         this.utils = new Utils();
-        this.systemResponse = new SystemResponse();
+        this.Gate = Gate;
     }
 }
 

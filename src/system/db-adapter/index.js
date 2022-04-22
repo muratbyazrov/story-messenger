@@ -45,10 +45,7 @@ class DbAdapter extends Utils {
         const preparedQuery = this.getPreparedQuery(queryName, params, unlock);
         try {
             const res = await this.client.query(preparedQuery);
-            return {
-                positive: true,
-                res: res.rows,
-            };
+            return {positive: true, ...res.rows[0]};
         } catch (err) {
             this.error(err.message);
             return {
