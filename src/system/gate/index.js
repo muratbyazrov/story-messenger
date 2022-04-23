@@ -27,7 +27,7 @@ class Gate extends Utils {
         if (!positive) {
             return {error: _data};
         }
-        return {data: _data};
+        return {data: [..._data.res]};
     }
 }
 

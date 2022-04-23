@@ -1,7 +1,7 @@
 const {schemaItems: {string, limit}} = require('../../system/validator/index.js');
 
 const getMessagesSchema = {
-    id: '/getMessagesSchema',
+    id: 'getMessagesSchema',
     type: 'object',
     additionalItems: true,
     properties: {
@@ -15,7 +15,7 @@ const getMessagesSchema = {
 };
 
 const modifyMessagesSchema = {
-    id: '/getMessagesSchema',
+    id: 'modifyMessagesSchema',
     type: 'object',
     properties: {
         event: string,
@@ -24,7 +24,7 @@ const modifyMessagesSchema = {
 };
 
 const removeMessagesSchema = {
-    id: '/getMessagesSchema',
+    id: 'removeMessagesSchema',
     type: 'object',
     properties: {
         event: string,

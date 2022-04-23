@@ -1,36 +1,36 @@
 const {System} = require('../../system');
-const {createMessage, getMessages} = require('./queries.js');
+const {createChat, getChats} = require('./queries.js');
 
-class MessagesService extends System {
-    getMessages(data) {
+class ChatsService extends System {
+    getChats(data) {
         return this.dbAdapter.execQuery({
-            queryName: getMessages,
+            queryName: getChats,
             params: data.params,
         });
     }
 
-    createMessage(data) {
+    createChat(data) {
         return this.dbAdapter.execQuery({
-            queryName: createMessage,
+            queryName: createChat,
             params: data.params,
         });
     }
 
-    modifyMessages(data) {
+    modifyChats(data) {
         return this.dbAdapter.execQuery({
-            queryName: modifyMessages,
+            queryName: modifyChats,
             params: data.params,
         });
     }
 
-    removeMessages(data) {
+    removeChats(data) {
         return this.dbAdapter.execQuery({
-            queryName: removeMessages,
+            queryName: removeChats,
             params: data.params,
         });
     }
 }
 
 module.exports = {
-    MessagesService,
+    ChatsService,
 };
