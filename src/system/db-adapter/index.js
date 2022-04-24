@@ -4,16 +4,10 @@ const {DbError} = require('../system-errors');
 const {Utils} = require('../utils');
 
 class DbAdapter extends Utils {
-    constructor() {
+    constructor(options) {
         super();
-        this.client = new Client({
-            user: 'postgres',
-            host: 'localhost',
-            database: 'postgres',
-            password: 'test',
-            port: 5432,
-        });
-
+        this.config = options;
+        this.client = new Client(this.config.db);
         this.connectPostgres();
         this.runMigrations();
     }

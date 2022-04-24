@@ -1,8 +1,12 @@
 const WebSocket = require('ws');
 
 class WsAdapter {
-    run(options, callback) {
-        this.wsServer = new WebSocket.Server({port: options.port});
+    constructor(options) {
+        this.config = options.ws;
+    }
+
+    run(callback) {
+        this.wsServer = new WebSocket.Server({port: this.config.port});
         try {
             this.wsServer.on('connection', wsClient => {
                 // 1. connect

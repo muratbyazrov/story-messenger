@@ -3,8 +3,8 @@ const {MessagesGate} = require('./src/entities/messages/messages-gate.js');
 const {ChatsGate} = require('./src/entities/chats/chats-gate.js');
 
 class App extends System {
-    constructor() {
-        super();
+    constructor(options) {
+        super(options);
         this.gate = new this.Gate([
             {EntityGate: MessagesGate, domain: 'messages'},
             {EntityGate: ChatsGate, domain: 'chats'},
@@ -12,20 +12,8 @@ class App extends System {
     }
 
     run() {
-        this.httpAdapter.run(
-            {
-                port: 3000,
-                path: '/story-messenger-api/v1',
-            },
-            request => this.gate.run(request),
-        );
-
-        this.wsAdapter.run(
-            {
-                port: 9000,
-            },
-            request => this.gate.run(request),
-        );
+        this.httpAdapter.run(request => this.gate.run(request));
+        this.wsAdapter.run(request => this.gate.run(request));
     }
 }
 
