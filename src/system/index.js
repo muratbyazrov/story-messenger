@@ -5,15 +5,15 @@ const {HttpAdapter} = require('./http-adapter');
 const {WsAdapter} = require('./ws-adapter');
 const {Utils} = require('./utils');
 const {Gate} = require('./gate');
-const systemConfig = require('./system-config.js');
+const config = require('../../config.js');
 
 class System {
     constructor() {
         this.logger = new Logger();
         this.validator = new Validator();
-        this.dbAdapter = new DbAdapter(systemConfig);
-        this.httpAdapter = new HttpAdapter(systemConfig);
-        this.wsAdapter = new WsAdapter(systemConfig);
+        this.dbAdapter = new DbAdapter(config);
+        this.httpAdapter = new HttpAdapter(config);
+        this.wsAdapter = new WsAdapter(config);
         this.utils = new Utils();
         this.Gate = Gate;
     }
