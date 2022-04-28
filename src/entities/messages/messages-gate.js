@@ -11,6 +11,8 @@ class MessagesGate extends System {
         switch (data.event) {
             case 'getMessages':
                 return this.messagesController.getMessages(data);
+            case 'createMessage':
+                return this.messagesController.createMessage(data);
             case 'modifyMessages':
                 return this.messagesController.modifyMessages(data);
             case 'removeMessages':

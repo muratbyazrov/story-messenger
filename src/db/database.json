@@ -3,16 +3,16 @@
     "driver": "pg",
     "user": "postgres",
     "password": "test",
-    "database": "postgres",
-    "schema": "story_messenger"
+    "database": "story_messenger",
+    "schema": "public"
   },
 
   "prod": {
     "driver": "pg",
     "user": {"ENV": "PRODUCTION_USERNAME"},
     "password": {"ENV": "PRODUCTION_PASSWORD"},
-    "database": "postgres",
-    "schema": "story_messenger"
+    "database": "story_messenger",
+    "schema": "public"
   },
 
   "pg": {
@@ -21,8 +21,8 @@
     "password": "test",
     "host": "localhost",
     "port": 5432,
-    "database": "postgres",
-    "schema": "story_messenger",
+    "database": "story_messenger",
+    "schema": "public",
     "ssl": "true"
   }
 }

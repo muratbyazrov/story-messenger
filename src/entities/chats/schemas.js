@@ -7,8 +7,12 @@ const getChatsSchema = {
     properties: {
         params: {
             type: 'object',
-            properties: {limit},
-            required: ['limit'],
+            properties: {
+                limit,
+                senderId: string,
+                recipientId: string,
+            },
+            required: ['limit', 'senderId', 'recipientId'],
         },
     },
     required: ['params'],
@@ -23,10 +27,10 @@ const createChatsSchema = {
         params: {
             type: 'object',
             properties: {
-                firstUserId: string,
-                secondUserId: string,
+                senderId: string,
+                recipientId: string,
             },
-            required: ['firstUserId', 'secondUserId'],
+            required: ['senderId', 'recipientId'],
         },
     },
 };

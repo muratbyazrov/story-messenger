@@ -7,8 +7,29 @@ const getMessagesSchema = {
     properties: {
         params: {
             type: 'object',
-            properties: {limit},
-            required: ['limit'],
+            properties: {
+                limit,
+                chatId: string,
+            },
+            required: ['limit', 'chatId'],
+        },
+    },
+    required: ['params'],
+};
+
+const createMessageSchema = {
+    id: 'createMessageSchema',
+    type: 'object',
+    additionalItems: true,
+    properties: {
+        params: {
+            type: 'object',
+            properties: {
+                senderId: string,
+                chatId: string,
+                messageText: string,
+            },
+            required: ['senderId', 'chatId', 'messageText'],
         },
     },
     required: ['params'],
@@ -34,6 +55,7 @@ const removeMessagesSchema = {
 
 module.exports = {
     getMessagesSchema,
+    createMessageSchema,
     modifyMessagesSchema,
     removeMessagesSchema,
 };

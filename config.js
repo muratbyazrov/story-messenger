@@ -14,7 +14,7 @@ module.exports = {
     db: {
         user: DB_USER || 'postgres',
         host: DB_HOST || 'localhost',
-        database: DB_DATABASE || 'postgres',
+        database: DB_DATABASE || 'story_messenger',
         password: DB_PASSWORD || 'test',
         port: DB_PORT || 5432,
     },

@@ -1,33 +1,30 @@
 module.exports = {
     createMessage: `
         INSERT INTO messages (
-             user_id
+             sender_id
             ,chat_id
-            ,text
+            ,message_text
             /*parentMessageId: ,parent_message_id*/
         )
         VALUES (
-             :userId
+             :senderId
             ,:chatId
-            ,:text
-            /*parentMessageId: ,parentMessageId*/
+            ,:messageText
+            /*parentMessageId: ,:parentMessageId*/
         );`,
 
     getMessages: `
         SELECT
              message_id AS "messageId"
-            ,user_id AS "userId"
+            ,sender_id AS "senderId"
             ,chat_id AS "chatId"
             ,create_dttm AS "createDttm"
-            ,modify_dttm AS "modifyDttm"
-            ,text
+            ,message_text AS "messageText"
             ,parent_message_id AS "parentMessageId"
         FROM
             messages
         WHERE
-            TRUE
-            /*userId: AND user_id = :userId*/
-            /*chatId: AND chat_id = :chatId*/
-            /*offset: OFFSET :offset*/
+            chat_id = :chatId
+        /*offset: OFFSET :offset*/
         LIMIT :limit;`,
 };

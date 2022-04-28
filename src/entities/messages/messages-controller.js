@@ -1,5 +1,5 @@
 const {System} = require('../../system');
-const {getMessagesSchema, modifyMessagesSchema, removeMessagesSchema} = require('./schemas.js');
+const {getMessagesSchema, modifyMessagesSchema, removeMessagesSchema, createMessageSchema} = require('./schemas.js');
 const {MessagesService} = require('./messages-service');
 
 class MessagesController extends System {
@@ -11,6 +11,11 @@ class MessagesController extends System {
     getMessages(data) {
         this.validator.validate(data, getMessagesSchema);
         return this.messagesService.getMessages(data);
+    }
+
+    createMessage(data) {
+        this.validator.validate(data, createMessageSchema);
+        return this.messagesService.createMessage(data);
     }
 
     modifyMessages(data) {
