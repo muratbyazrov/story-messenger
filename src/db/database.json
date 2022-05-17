@@ -1,27 +1,29 @@
 {
   "dev": {
     "driver": "pg",
-    "user": "postgres",
+    "user": "story-messenger",
     "password": "test",
-    "database": "story_messenger",
-    "schema": "public"
+    "database": "story-messenger",
+    "schema": "public",
+    "host": "127.10.10.28"
   },
 
   "prod": {
     "driver": "pg",
     "user": {"ENV": "PRODUCTION_USERNAME"},
     "password": {"ENV": "PRODUCTION_PASSWORD"},
-    "database": "story_messenger",
-    "schema": "public"
+    "database": "story-messenger",
+    "schema": "public",
+    "host": "127.10.10.28"
   },
 
   "pg": {
     "driver": "pg",
-    "user": "postgres",
+    "user": "story-messenger",
     "password": "test",
-    "host": "localhost",
+    "host": "127.10.10.28",
     "port": 5432,
-    "database": "story_messenger",
+    "database": "story-messenger",
     "schema": "public",
     "ssl": "true"
   }

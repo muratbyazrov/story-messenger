@@ -12,9 +12,9 @@ const {
 
 module.exports = {
     db: {
-        user: DB_USER || 'postgres',
-        host: DB_HOST || 'localhost',
-        database: DB_DATABASE || 'story_messenger',
+        user: DB_USER || 'story-messenger',
+        host: DB_HOST || '127.10.10.28',
+        database: DB_DATABASE || 'story-messenger',
         password: DB_PASSWORD || 'test',
         port: DB_PORT || 5432,
     },

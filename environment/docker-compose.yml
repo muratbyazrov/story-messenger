@@ -1,0 +1,19 @@
+version: '3.4'
+
+x-check: &default-healthcheck
+  healthcheck:
+    test: ["CMD", "/data/.prepare"]
+
+services:
+  postgres:
+    image: "${IMG_POSTGRES_TAG}"
+    restart: unless-stopped
+    environment:
+      - POSTGRES_USER=story-messenger
+      - POSTGRES_PASSWORD=test
+    command: [ "postgres", "-c", "shared_buffers=256MB", "-c", "max_connections=200" ]
+    ports:
+      - "${IP}:${POSTGRES_EXPOSE}"
+    volumes:
+      - ./postgres/data:/data:rw
+    <<: *default-healthcheck

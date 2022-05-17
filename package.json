@@ -3,7 +3,9 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "start": "nodemon app.js"
+    "start": "nodemon app.js",
+    "env": "./environment docker-compose up",
+    "stop env": "./environment docker-compose rm -vsf"
   },
   "dependencies": {
     "body-parser": "^1.20.0",
