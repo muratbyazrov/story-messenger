@@ -1,22 +1,20 @@
 const {System} = require('../../system');
-const {createChat, getChats} = require('./queries.js');
+const {getUsers, createUser} = require('./queries.js');
 
-class ChatsService {
-    getChats(data) {
+class UsersService {
+    getUsers(data) {
         return System.dbAdapter.execQuery({
-            queryName: getChats,
+            queryName: getUsers,
             params: data.params,
         });
     }
 
-    createChat(data) {
+    createUser(data) {
         return System.dbAdapter.execQuery({
-            queryName: createChat,
+            queryName: createUser,
             params: data.params,
         });
     }
 }
 
-module.exports = {
-    ChatsService,
-};
+module.exports = {UsersService};

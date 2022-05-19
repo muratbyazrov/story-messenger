@@ -11,7 +11,7 @@ const getMessagesSchema = {
                 limit,
                 chatId: string,
             },
-            required: ['limit', 'chatId'],
+            required: ['limit'],
         },
     },
     required: ['params'],

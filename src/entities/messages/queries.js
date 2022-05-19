@@ -11,7 +11,8 @@ module.exports = {
             ,:chatId
             ,:messageText
             /*parentMessageId: ,:parentMessageId*/
-        );`,
+        )
+        RETURNING message_id AS "messageId";`,
 
     getMessages: `
         SELECT
@@ -24,7 +25,8 @@ module.exports = {
         FROM
             messages
         WHERE
-            chat_id = :chatId
+            TRUE
+            /*messageId: AND message_id = :messageId */
         /*offset: OFFSET :offset*/
         LIMIT :limit;`,
 };

@@ -4,9 +4,9 @@ const {Utils} = require('../utils');
 class Gate extends Utils {
     constructor(gates) {
         super();
-        this.handlers = {};
+        this.gates = {};
         for (const {EntityGate, domain} of gates) {
-            this.handlers[domain] = new EntityGate();
+            this.gates[domain] = new EntityGate();
         }
     }
 
@@ -14,7 +14,7 @@ class Gate extends Utils {
         try {
             const data = this.isJson(request) ? request : JSON.parse(request);
             this.validate(data, gateSchema);
-            return this.getSystemResponse(await this.handlers[data.domain].run(data));
+            return this.getSystemResponse(await this.gates[data.domain].run(data));
         } catch (err) {
             const error = this.getSystemResponse(err);
             this.log(error);

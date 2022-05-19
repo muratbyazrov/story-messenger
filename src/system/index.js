@@ -20,5 +20,5 @@ class System {
 }
 
 module.exports = {
-    System,
+    System: new System(),
 };

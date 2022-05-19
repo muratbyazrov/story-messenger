@@ -16,3 +16,8 @@ CREATE TABLE IF NOT EXISTS messages (
     parent_message_id BIGINT,
     is_read BOOLEAN NOT NULL DEFAULT FALSE
 );
+
+CREATE TABLE IF NOT EXISTS users (
+    user_id TEXT NOT NULL UNIQUE,
+    ws_session_id TEXT NOT NULL
+);

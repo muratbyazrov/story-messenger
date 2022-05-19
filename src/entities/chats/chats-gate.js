@@ -1,9 +1,7 @@
-const {System} = require('../../system');
 const {ChatsController} = require('./chats-controller.js');
 
-class ChatsGate extends System {
-    constructor(options) {
-        super(options);
+class ChatsGate {
+    constructor() {
         this.chatsController = new ChatsController();
     }
 
@@ -13,10 +11,6 @@ class ChatsGate extends System {
                 return this.chatsController.getChats(data);
             case 'createChat':
                 return this.chatsController.createChat(data);
-            case 'modifyChats':
-                return this.chatsController.modifyChats(data);
-            case 'removeChats':
-                return this.chatsController.removeChats(data);
             default:
                 return {};
         }
