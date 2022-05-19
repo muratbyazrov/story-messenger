@@ -9,8 +9,10 @@ class WsAdapter {
         this.wsServer = new WebSocket.Server({port: this.config.port});
         try {
             this.wsServer.on('connection', wsClient => {
+                console.log(wsClient);
                 // 1. connect
                 console.log('SYSTEM [INFO] WS client is connected');
+                wsClient.send('Connected to story-messenger ws-server');
 
                 // 2. callback
                 try {

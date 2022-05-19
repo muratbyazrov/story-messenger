@@ -9,10 +9,9 @@ const getChatsSchema = {
             type: 'object',
             properties: {
                 limit,
-                senderId: string,
-                recipientId: string,
+                userId: string,
             },
-            required: ['limit', 'senderId', 'recipientId'],
+            required: ['limit', 'userId'],
         },
     },
     required: ['params'],

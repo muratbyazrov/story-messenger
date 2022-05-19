@@ -13,9 +13,11 @@ class MessagesController extends System {
         return this.messagesService.getMessages(data);
     }
 
-    createMessage(data) {
+    async createMessage(data) {
         this.validator.validate(data, createMessageSchema);
-        return this.messagesService.createMessage(data);
+        const message = await this.messagesService.createMessage(data);
+        const {chatId} = message;
+        return this.getMessages(chatId);
     }
 
     modifyMessages(data) {

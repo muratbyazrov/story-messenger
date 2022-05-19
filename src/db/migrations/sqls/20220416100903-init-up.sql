@@ -13,5 +13,6 @@ CREATE TABLE IF NOT EXISTS messages (
     chat_id BIGINT NOT NULL REFERENCES chats(chat_id),
     create_dttm TIMESTAMP WITH TIME ZONE DEFAULT NOW(),
     message_text TEXT NOT NULL,
-    parent_message_id BIGINT
+    parent_message_id BIGINT,
+    is_read BOOLEAN NOT NULL DEFAULT FALSE
 );
