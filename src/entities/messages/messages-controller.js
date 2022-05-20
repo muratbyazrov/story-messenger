@@ -12,11 +12,9 @@ class MessagesController {
         return this.messagesService.getMessages(data);
     }
 
-    async createMessage(data) {
+    createMessage(data) {
         System.validator.validate(data, createMessageSchema);
-        const message = await this.messagesService.createMessage(data);
-        const {chatId} = message;
-        return this.getMessages(chatId);
+        return this.messagesService.createMessage(data);
     }
 }
 

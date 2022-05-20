@@ -35,18 +35,18 @@ class DbAdapter extends Utils {
         });
     }
 
-    async execQuery({queryName, params, unlock = true}) {
-        const preparedQuery = this.getPreparedQuery(queryName, params, unlock);
+    async execQuery({queryName, params, isArrayResult = true}) {
+        const preparedQuery = this.getPreparedQuery(queryName, params);
         try {
-            const res = await this.client.query(preparedQuery);
-            return {positive: true, data: res.rows};
+            const result = await this.client.query(preparedQuery);
+            return isArrayResult ? result.rows : result.rows[0];
         } catch (err) {
             this.error(err.message);
             throw new DbError(err.message);
         }
     }
 
-    getPreparedQuery(query, params, unlock) {
+    getPreparedQuery(query, params, unlock = true) {
         let text = query;
         if (unlock) {
             text = this.unlockParams(text, params);

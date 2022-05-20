@@ -1,6 +1,6 @@
 class ValidationError {
     constructor(message) {
-        this.positive = false;
+        this.isError = true;
         this.code = 404;
         this.name = 'Validation Error';
         this.message = message;

@@ -14,20 +14,17 @@ class Gate extends Utils {
         try {
             const data = this.isJson(request) ? request : JSON.parse(request);
             this.validate(data, gateSchema);
-            return this.getSystemResponse(await this.gates[data.domain].run(data));
+            return this.getSystemResponse(request, await this.gates[data.domain].run(data));
         } catch (err) {
-            const error = this.getSystemResponse(err);
+            const error = this.getSystemResponse(request, err);
             this.log(error);
             return error;
         }
     }
 
-    getSystemResponse(data) {
-        const {positive = true, ..._data} = data;
-        if (!positive) {
-            return {error: _data};
-        }
-        return {data: [..._data.res]};
+    getSystemResponse({domain, event}, data) {
+        const {isError, ..._data} = data;
+        return isError ? {status: 'error', domain, event, error: _data} : {status: 'ok', domain, event, data: _data};
     }
 }
 

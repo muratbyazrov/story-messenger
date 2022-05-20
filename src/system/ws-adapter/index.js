@@ -37,10 +37,9 @@ class WsAdapter {
         }
     }
 
-    send(sessionId = null, message = {}) {
+    async send(sessionId = null, message = {}) {
         const wsClient = this.wsClients.get(sessionId);
-
-        wsClient.send(JSON.stringify(message));
+        await wsClient.send(JSON.stringify(message));
     }
 }
 
