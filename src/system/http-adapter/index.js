@@ -1,6 +1,6 @@
 const express = require('express');
-const bodyParser = require('body-parser');
 const app = express();
+const bodyParser = require('body-parser');
 
 class HttpAdapter {
     constructor(options) {
@@ -26,3 +26,8 @@ class HttpAdapter {
 module.exports = {
     HttpAdapter,
 };
+
+/*
+* настройка https на localhost
+* https://www.section.io/engineering-education/how-to-get-ssl-https-for-localhost/
+* */
