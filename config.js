@@ -21,6 +21,7 @@ module.exports = {
     http: {
         port: HTTP_PORT || 3000,
         path: HTTP_PATH || '/story-messenger-api/v1',
+        host: '127.0.0.1',
     },
     ws: {
         port: WS_PORT || 9000,

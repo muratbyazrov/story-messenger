@@ -8,7 +8,7 @@ class HttpAdapter {
     }
 
     run(callback) {
-        app.listen(this.config.port, () => {
+        app.listen(this.config.port, this.config.host, () => {
             console.info(`SYSTEM [INFO] App listening on port ${this.config.port}`);
         });
         app.use(bodyParser.json());
