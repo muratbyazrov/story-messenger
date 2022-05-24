@@ -1,5 +1,6 @@
 const {gateSchema} = require('./gate-schema.js');
 const {Utils} = require('../utils');
+const {ValidationError} = require('../system-errors/validation-error');
 
 class Gate extends Utils {
     constructor(gates) {
@@ -12,7 +13,15 @@ class Gate extends Utils {
 
     async run(request) {
         try {
-            const data = this.isJson(request) ? request : JSON.parse(request);
+            let data;
+            if (this.isObject(request)) {
+                data = request;
+            } else if (this.isJson(request)) {
+                data = JSON.parse(request);
+            } else {
+                throw new ValidationError('Request error. Maybe request is not JSON');
+            }
+
             this.validate(data, gateSchema);
             return this.getSystemResponse(request, await this.gates[data.domain].run(data));
         } catch (err) {
@@ -22,7 +31,7 @@ class Gate extends Utils {
         }
     }
 
-    getSystemResponse({domain, event}, data) {
+    getSystemResponse({domain = 'error', event = 'error'}, data) {
         const {isError, ..._data} = data;
         return isError ? {status: 'error', domain, event, error: _data} : {status: 'ok', domain, event, data};
     }

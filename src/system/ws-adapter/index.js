@@ -1,8 +1,10 @@
 const WebSocket = require('ws');
 const {v4} = require('uuid');
+const {Utils} = require('../utils');
 
-class WsAdapter {
+class WsAdapter extends Utils {
     constructor(options) {
+        super();
         this.config = options.ws;
         this.wsClients = new Map();
     }
@@ -20,7 +22,7 @@ class WsAdapter {
                 // 2. callback
                 try {
                     wsClient.on('message', async message => {
-                        wsClient.send(JSON.stringify(await callback(JSON.parse(message.toString()))));
+                        wsClient.send(JSON.stringify(await callback(message.toString())));
                     });
                 } catch (error) {
                     wsClient.send(`${new Date().toLocaleString()} | ${error.message}`);
@@ -29,7 +31,7 @@ class WsAdapter {
                 // 3. disconnect
                 wsClient.on('close', () => {
                     this.wsClients.delete(wsClient);
-                    console.log('SYSTEM [INFO] WS client is disconnected');
+                    console.log('SYSTEM [INFO]: WS client is disconnected');
                 });
             });
         } catch (error) {

@@ -17,7 +17,7 @@ class DbAdapter extends Utils {
             if (err) {
                 throw new DbError(err.message);
             }
-            console.log('SYSTEM [INFO] Connected to postgres data base!');
+            console.log('SYSTEM [INFO]: Connected to postgres data base');
         });
     }
 
@@ -27,7 +27,7 @@ class DbAdapter extends Utils {
                 console.log('SYSTEM', stdout);
             }
             if (stderr) {
-                console.log('SYSTEM [INFO]', stderr);
+                console.log('SYSTEM [INFO]:', stderr);
             }
             if (error !== null) {
                 console.log(`SYSTEM [ERROR]: exec error: ${error}`);

@@ -10,11 +10,11 @@ const config = require('../../config.js');
 class System {
     constructor() {
         this.logger = new Logger();
+        this.utils = new Utils();
         this.validator = new Validator();
         this.dbAdapter = new DbAdapter(config);
         this.httpAdapter = new HttpAdapter(config);
         this.wsAdapter = new WsAdapter(config);
-        this.utils = new Utils();
         this.Gate = Gate;
     }
 }

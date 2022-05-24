@@ -9,7 +9,7 @@ class HttpAdapter {
 
     run(callback) {
         app.listen(this.config.port, this.config.host, () => {
-            console.info(`SYSTEM [INFO] App listening on port ${this.config.port}`);
+            console.info(`SYSTEM [INFO]: App listening on port ${this.config.port}`);
         });
         app.use(bodyParser.json());
         app.post(this.config.path, async (req, res) => {

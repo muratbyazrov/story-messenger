@@ -2,11 +2,11 @@ const {Logger} = require('../logger');
 
 class Utils extends Logger {
     isJson(data) {
-        let result = false;
+        let result = true;
         try {
             JSON.parse(data);
         } catch (err) {
-            result = true;
+            result = false;
         }
         return result;
     }
