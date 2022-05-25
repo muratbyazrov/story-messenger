@@ -19,7 +19,7 @@ module.exports = {
         port: DB_PORT || 5432,
     },
     http: {
-        host: '127.0.0.1',
+        host: '192.168.1.71',
         port: HTTP_PORT || 3000,
         path: HTTP_PATH || '/story-messenger-api/v1',
     },
