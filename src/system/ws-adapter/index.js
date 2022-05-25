@@ -15,6 +15,7 @@ class WsAdapter extends Utils {
             this.wsServer.on('connection', wsClient => {
                 // 1. connect
                 const sessionId = v4();
+                console.log(`SYSTEM [INFO]: WS client ${sessionId} is connected`);
                 wsClient.send(JSON.stringify({sessionId}));
                 this.wsClients.set(sessionId, wsClient);
 
@@ -31,7 +32,7 @@ class WsAdapter extends Utils {
                 // 3. disconnect
                 wsClient.on('close', () => {
                     this.wsClients.delete(wsClient);
-                    console.log('SYSTEM [INFO]: WS client is disconnected');
+                    console.log(`SYSTEM [INFO]: WS client ${sessionId} is disconnected`);
                 });
             });
         } catch (error) {
