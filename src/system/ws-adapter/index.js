@@ -41,6 +41,7 @@ class WsAdapter extends Utils {
     }
 
     async send(sessionId = null, message = {}) {
+        // добавить проверку на то, что ws клиент создан или существет (после перезагрузки клиенты стираются)
         const wsClient = this.wsClients.get(sessionId);
         await wsClient.send(JSON.stringify(message));
     }
