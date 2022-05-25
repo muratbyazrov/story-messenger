@@ -12,6 +12,7 @@ class Gate extends Utils {
     }
 
     async run(request) {
+        console.info(`SYSTEM [INFO]: Got request:`, request);
         try {
             let data;
             if (this.isObject(request)) {
