@@ -3,10 +3,16 @@ module.exports = {
         INSERT INTO users (
              user_id
             ,ws_session_id
+            ,first_name
+            ,age
+            ,photo_url
         )
         VALUES (
              :userId
             ,:wsSessionId
+            ,:firstName
+            ,:age
+            ,:photoUrl
         )
         ON CONFLICT (user_id) DO UPDATE SET 
             ws_session_id = :wsSessionId;`,

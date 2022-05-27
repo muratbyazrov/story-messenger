@@ -13,7 +13,6 @@ class HttpAdapter {
         });
         app.use(bodyParser.json());
         app.post(this.config.path, async (req, res) => {
-            console.info(`SYSTEM [INFO]: Get http request`, req.body);
             try {
                 res.send(await callback(req.body));
             } catch (err) {
@@ -26,8 +25,3 @@ class HttpAdapter {
 module.exports = {
     HttpAdapter,
 };
-
-/*
-* настройка https на localhost
-* https://www.section.io/engineering-education/how-to-get-ssl-https-for-localhost/
-* */

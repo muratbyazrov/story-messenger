@@ -12,7 +12,6 @@ class Gate extends Utils {
     }
 
     async run(request) {
-        console.info(`SYSTEM [INFO]: Got request:`, request);
         try {
             let data;
             if (this.isObject(request)) {
@@ -23,8 +22,11 @@ class Gate extends Utils {
                 throw new ValidationError('Request error. Maybe request is not JSON');
             }
 
+            console.info(`SYSTEM [INFO]: Got request:`, data);
             this.validate(data, gateSchema);
-            return this.getSystemResponse(request, await this.gates[data.domain].run(data));
+            const result = this.getSystemResponse(request, await this.gates[data.domain].run(data));
+            console.info(`SYSTEM [INFO]: Send result:`, result);
+            return result;
         } catch (err) {
             const error = this.getSystemResponse(request, err);
             this.log(error);
