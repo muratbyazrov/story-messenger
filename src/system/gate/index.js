@@ -1,6 +1,7 @@
 const {gateSchema} = require('./gate-schema.js');
 const {Utils} = require('../utils');
 const {ValidationError} = require('../system-errors/validation-error');
+const {systemResponse} = require('../system-response');
 
 class Gate extends Utils {
     constructor(gates) {
@@ -24,19 +25,14 @@ class Gate extends Utils {
 
             console.info(`SYSTEM [INFO]: Got request:`, data);
             this.validate(data, gateSchema);
-            const result = this.getSystemResponse(request, await this.gates[data.domain].run(data));
+            const result = systemResponse.form(request, await this.gates[data.domain].run(data));
             console.info(`SYSTEM [INFO]: Send result:`, result);
             return result;
         } catch (err) {
-            const error = this.getSystemResponse(request, err);
+            const error = systemResponse.form(request, err);
             this.log(error);
             return error;
         }
-    }
-
-    getSystemResponse({domain = 'error', event = 'error'}, data) {
-        const {isError, ..._data} = data;
-        return isError ? {status: 'error', domain, event, error: _data} : {status: 'ok', domain, event, data};
     }
 }
 

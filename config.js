@@ -25,5 +25,6 @@ module.exports = {
     },
     ws: {
         port: WS_PORT || 9000,
+        host: '192.168.1.71',
     },
 };

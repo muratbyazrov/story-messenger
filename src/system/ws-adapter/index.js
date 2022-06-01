@@ -10,7 +10,7 @@ class WsAdapter extends Utils {
     }
 
     run(callback) {
-        this.wsServer = new WebSocket.Server({port: this.config.port});
+        this.wsServer = new WebSocket.Server({...this.config});
         try {
             this.wsServer.on('connection', wsClient => {
                 // 1. connect

@@ -6,6 +6,7 @@ const {WsAdapter} = require('./ws-adapter');
 const {Utils} = require('./utils');
 const {Gate} = require('./gate');
 const config = require('../../config.js');
+const {systemResponse} = require('./system-response');
 
 class System {
     constructor() {
@@ -15,6 +16,7 @@ class System {
         this.dbAdapter = new DbAdapter(config);
         this.httpAdapter = new HttpAdapter(config);
         this.wsAdapter = new WsAdapter(config);
+        this.systemResponse = systemResponse;
         this.Gate = Gate;
     }
 }

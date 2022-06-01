@@ -25,7 +25,10 @@ class MessagesService {
             },
         });
 
-        await System.wsAdapter.send(message.wsSessionId, message);
+        await System.wsAdapter.send(
+            message.wsSessionId,
+            System.systemResponse.form({domain: 'messages', event: 'messageCreated'}, message),
+        );
 
         return res;
     }
