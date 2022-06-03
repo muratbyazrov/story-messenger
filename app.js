@@ -12,12 +12,10 @@ class App {
             {EntityGate: ChatsGate, domain: 'chats'},
             {EntityGate: UsersGate, domain: 'users'},
         ]);
-    }
-
-    init() {
         System.httpAdapter.run(request => System.gate.run(request));
         System.wsAdapter.run(request => System.gate.run(request));
     }
 }
 
-new App().init();
+// eslint-disable-next-line no-new
+new App();
