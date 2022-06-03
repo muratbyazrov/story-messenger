@@ -6,14 +6,7 @@ class ChatsGate {
     }
 
     run(data) {
-        switch (data.event) {
-            case 'getChats':
-                return this.chatsController.getChats(data);
-            case 'createChat':
-                return this.chatsController.createChat(data);
-            default:
-                return {};
-        }
+        return this.chatsController[data.event](data);
     }
 }
 

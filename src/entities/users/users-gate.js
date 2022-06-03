@@ -6,14 +6,7 @@ class UsersGate {
     }
 
     run(data) {
-        switch (data.event) {
-            case 'getUsers':
-                return this.usersController.getUsers(data);
-            case 'createUser':
-                return this.usersController.createUser(data);
-            default:
-                return {};
-        }
+        return this.usersController[data.event](data);
     }
 }
 

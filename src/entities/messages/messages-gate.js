@@ -6,14 +6,7 @@ class MessagesGate {
     }
 
     run(data) {
-        switch (data.event) {
-            case 'getMessages':
-                return this.messagesController.getMessages(data);
-            case 'createMessage':
-                return this.messagesController.createMessage(data);
-            default:
-                return {};
-        }
+        return this.messagesController[data.event](data);
     }
 }
 
