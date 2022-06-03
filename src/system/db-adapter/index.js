@@ -1,11 +1,11 @@
+const {utils} = require('../utils');
+const {logger} = require('../logger');
 const {Client} = require('pg');
 const {exec} = require('child_process');
 const {DbError} = require('../system-errors');
-const {Utils} = require('../utils');
 
-class DbAdapter extends Utils {
+class DbAdapter {
     constructor(options) {
-        super();
         this.config = options;
         this.client = new Client(this.config.db);
         this.connectPostgres();
@@ -41,7 +41,7 @@ class DbAdapter extends Utils {
             const result = await this.client.query(preparedQuery);
             return isArrayResult ? result.rows : result.rows[0];
         } catch (err) {
-            this.error(err.message);
+            logger.error(err.message);
             throw new DbError(err.message);
         }
     }
@@ -56,7 +56,7 @@ class DbAdapter extends Utils {
         let paramNum = 0;
         text = text
             .replace(/\:(\w+)/g, (text, placeholder) => {
-                if (this.has(params, placeholder)) {
+                if (utils.has(params, placeholder)) {
                     ++paramNum;
                     values.push(params[placeholder]);
                     return `$${paramNum}`;
@@ -73,7 +73,7 @@ class DbAdapter extends Utils {
         let unlockedTemplate = query;
 
         for (const param in params) {
-            if (this.has(params, param)) {
+            if (utils.has(params, param)) {
                 unlockedTemplate = this.unlockTemplate(unlockedTemplate, param);
             }
         }

@@ -9,6 +9,6 @@ const schemaItems = {
 };
 
 module.exports = {
-    Validator,
+    validator: new Validator(),
     schemaItems,
 };

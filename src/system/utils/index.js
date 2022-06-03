@@ -1,6 +1,4 @@
-const {Logger} = require('../logger');
-
-class Utils extends Logger {
+class Utils {
     isJson(data) {
         let result = true;
         try {
@@ -23,4 +21,4 @@ class Utils extends Logger {
     }
 }
 
-module.exports = {Utils};
+module.exports = {utils: new Utils()};

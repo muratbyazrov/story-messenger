@@ -1,23 +1,22 @@
-const {Validator} = require('./validator');
-const {Logger} = require('./logger');
+const {validator} = require('./validator');
+const {logger} = require('./logger');
+const {utils} = require('./utils');
+const {systemResponse} = require('./system-response');
 const {DbAdapter} = require('./db-adapter');
 const {HttpAdapter} = require('./http-adapter');
 const {WsAdapter} = require('./ws-adapter');
-const {Utils} = require('./utils');
 const {Gate} = require('./gate');
-const config = require('../../config.js');
-const {systemResponse} = require('./system-response');
 
 class System {
-    constructor() {
-        this.logger = new Logger();
-        this.utils = new Utils();
-        this.validator = new Validator();
+    init(config, gates) {
+        this.logger = logger;
+        this.utils = utils;
+        this.validator = validator;
+        this.systemResponse = systemResponse;
         this.dbAdapter = new DbAdapter(config);
         this.httpAdapter = new HttpAdapter(config);
         this.wsAdapter = new WsAdapter(config);
-        this.systemResponse = systemResponse;
-        this.Gate = Gate;
+        this.gate = new Gate(gates);
     }
 }
 

@@ -1,10 +1,8 @@
 const WebSocket = require('ws');
 const {v4} = require('uuid');
-const {Utils} = require('../utils');
 
-class WsAdapter extends Utils {
+class WsAdapter {
     constructor(options) {
-        super();
         this.config = options.ws;
         this.wsClients = new Map();
     }
@@ -41,7 +39,7 @@ class WsAdapter extends Utils {
     }
 
     async send(sessionId = null, message = {}) {
-        // добавить проверку на то, что ws клиент создан или существет (после перезагрузки клиенты стираются)
+        // добавить проверку на то, что ws клиент создан или существует (после перезагрузки клиенты стираются)
         const wsClient = this.wsClients.get(sessionId);
         await wsClient.send(JSON.stringify(message));
     }
