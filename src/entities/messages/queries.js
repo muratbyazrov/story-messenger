@@ -12,7 +12,13 @@ module.exports = {
             ,:messageText
             /*parentMessageId: ,:parentMessageId*/
         )
-        RETURNING message_id AS "messageId";`,
+        RETURNING 
+             message_id AS "messageId"
+            ,sender_id AS "senderId"
+            ,chat_id AS "chatId"
+            ,create_dttm AS "createDttm"
+            ,message_text AS "messageText"
+            ,parent_message_id AS "parentMessageId";`,
 
     getMessages: `
         SELECT
@@ -35,5 +41,6 @@ module.exports = {
             /*chatId: AND msg.chat_id = :chatId */
             /*messageId: AND msg.message_id = :messageId */
         /*offset: OFFSET :offset*/
+        ORDER BY msg.create_dttm
         LIMIT :limit;`,
 };
