@@ -1,4 +1,4 @@
-const {System} = require('../../system');
+const {System} = require('story-system');
 const {getUsersSchema, createUserSchema} = require('./schemas.js');
 const {UsersService} = require('./users-service');
 

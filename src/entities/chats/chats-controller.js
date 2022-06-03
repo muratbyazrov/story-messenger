@@ -1,4 +1,4 @@
-const {System} = require('../../system');
+const {System} = require('story-system');
 const {getChatsSchema, createChatsSchema} = require('./schemas.js');
 const {ChatsService} = require('./chats-service.js');
 

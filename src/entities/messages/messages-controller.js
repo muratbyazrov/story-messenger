@@ -1,4 +1,4 @@
-const {System} = require('../../system');
+const {System} = require('story-system');
 const {getMessagesSchema, createMessageSchema} = require('./schemas.js');
 const {MessagesService} = require('./messages-service');
 
