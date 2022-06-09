@@ -1,30 +1,36 @@
 module.exports = {
-    createUser: `
-        INSERT INTO users (
-             user_id
+    createAccount: `
+        INSERT INTO accounts (
+             account_id
+            ,login
+            ,password
             ,ws_session_id
             ,first_name
             ,age
             ,photo_url
         )
         VALUES (
-             :userId
+             :accountId
+            ,:login
+            ,:password
             ,:wsSessionId
             ,:firstName
             ,:age
             ,:photoUrl
-        )
-        ON CONFLICT (user_id) DO UPDATE SET 
-            ws_session_id = :wsSessionId;`,
+        );`,
 
-    getUsers: `
+    getAccounts: `
         SELECT
-             user_id AS "userId"
+             account_id AS "accountId"
             ,ws_session_id AS "wsSessionId"
         FROM
-            users
+            accounts
         WHERE
-            user_id = :userId
+            account_id = :accountId
         /*offset: OFFSET :offset*/
         LIMIT :limit;`,
+
+    modifyAccounts: `
+        
+    `,
 };

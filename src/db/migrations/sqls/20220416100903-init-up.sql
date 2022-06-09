@@ -17,8 +17,8 @@ CREATE TABLE IF NOT EXISTS messages (
     is_read BOOLEAN NOT NULL DEFAULT FALSE
 );
 
-CREATE TABLE IF NOT EXISTS users (
-    user_id TEXT NOT NULL UNIQUE,
+CREATE TABLE IF NOT EXISTS accounts (
+    account_id TEXT NOT NULL UNIQUE,
     login TEXT NOT NULL,
     password TEXT NOT NULL,
     ws_session_id TEXT NOT NULL,

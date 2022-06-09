@@ -1,7 +1,7 @@
 const {System: {validator: {schemaItems: {string, limit}}}} = require('story-system');
 
-const getUsersSchema = {
-    id: 'getUsersSchema',
+const getAccountsSchema = {
+    id: 'getAccountsSchema',
     type: 'object',
     additionalItems: true,
     properties: {
@@ -9,32 +9,32 @@ const getUsersSchema = {
             type: 'object',
             properties: {
                 limit,
-                userId: string,
+                accountId: string,
             },
-            required: ['limit', 'userId'],
+            required: ['limit', 'accountId'],
         },
     },
     required: ['params'],
 };
 
-const createUserSchema = {
-    id: 'createUserSchema',
+const createAccountSchema = {
+    id: 'createAccountSchema',
     type: 'object',
     additionalItems: true,
     properties: {
         params: {
             type: 'object',
             properties: {
-                userId: string,
+                accountId: string,
                 wsSessionId: string,
             },
-            required: ['userId', 'wsSessionId'],
+            required: ['accountId', 'wsSessionId'],
         },
     },
     required: ['params'],
 };
 
 module.exports = {
-    getUsersSchema,
-    createUserSchema,
+    getAccountsSchema,
+    createAccountSchema,
 };
