@@ -11,6 +11,7 @@ const {
 } = process.env;
 
 module.exports = {
+    domain: 'messenger',
     db: {
         user: DB_USER || 'story-messenger',
         host: DB_HOST || '127.10.10.28',
