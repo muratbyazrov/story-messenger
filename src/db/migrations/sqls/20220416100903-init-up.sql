@@ -19,6 +19,8 @@ CREATE TABLE IF NOT EXISTS messages (
 
 CREATE TABLE IF NOT EXISTS users (
     user_id TEXT NOT NULL UNIQUE,
+    login TEXT NOT NULL,
+    password TEXT NOT NULL,
     ws_session_id TEXT NOT NULL,
     first_name TEXT NOT NULL,
     age SMALLINT NOT NULL,
