@@ -17,7 +17,8 @@ module.exports = {
             ,:firstName
             ,:age
             ,:photoUrl
-        );`,
+        )
+        ON CONFLICT (account_id) DO UPDATE SET ws_session_id = :wsSessionId;`,
 
     getAccounts: `
         SELECT
