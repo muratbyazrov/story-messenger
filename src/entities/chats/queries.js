@@ -18,17 +18,17 @@ module.exports = {
             ,ch.create_dttm AS "createDttm"
             ,ch.modify_dttm AS "modifyDttm"
             ,ch.modify_dttm AS "modifyDttm"
-            ,us.user_id AS "senderId"
-            ,us.first_name AS "senderName"
-            ,us.age AS "senderAge"
-            ,us.photo_url AS "senderPhotoUrl"
+            ,ac.account_id AS "senderId"
+            ,ac.first_name AS "senderName"
+            ,ac.age AS "senderAge"
+            ,ac.photo_url AS "senderPhotoUrl"
         FROM
             chats AS ch
-            INNER JOIN users AS us ON
-                (ch.sender_id = us.user_id AND ch.sender_id != :userId)
-                OR (ch.recipient_id = us.user_id AND ch.recipient_id != :userId)
+            INNER JOIN accounts AS ac ON
+                (ch.sender_id = ac.account_id AND ch.sender_id != :accountId)
+                OR (ch.recipient_id = ac.account_id AND ch.recipient_id != :accountId)
         WHERE
-            sender_id = :userId OR recipient_id = :userId
+            sender_id = :accountId OR recipient_id = :accountId
             /*chatId: AND chat_id = :chatId*/
             /*createDttm: AND create_dttm = :createDttm*/
             /*modifyDttm: AND modify_dttm = :modifyDttm*/

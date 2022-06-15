@@ -29,13 +29,13 @@ module.exports = {
             ,msg.message_text AS "messageText"
             ,msg.parent_message_id AS "parentMessageId"
             ,ch.recipient_id AS "recipientId"
-            ,us.ws_session_id AS "wsSessionId"
+            ,ac.ws_session_id AS "wsSessionId"
         FROM
             messages AS msg
             INNER JOIN chats AS ch ON msg.chat_id = ch.chat_id
-            LEFT JOIN users AS us ON
-                ch.recipient_id = user_id AND ch.recipient_id != msg.sender_id
-                OR ch.sender_id = user_id AND ch.sender_id != msg.sender_id
+            LEFT JOIN accounts AS ac ON
+                ch.recipient_id = account_id AND ch.recipient_id != msg.sender_id
+                OR ch.sender_id = account_id AND ch.sender_id != msg.sender_id
         WHERE
             TRUE
             /*chatId: AND msg.chat_id = :chatId */

@@ -9,9 +9,9 @@ const getChatsSchema = {
             type: 'object',
             properties: {
                 limit,
-                userId: string,
+                accountId: string,
             },
-            required: ['limit', 'userId'],
+            required: ['limit', 'accountId'],
         },
     },
     required: ['params'],
